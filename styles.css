@@ -5,29 +5,29 @@
 
 /* ---------- Design tokens ---------- */
 :root {
-  /* Paper / surfaces */
-  --bg:           #f5f5f1;   /* warm paper white */
-  --bg-deep:      #ebebe6;   /* gallery gray */
-  --bg-card:      #ffffff;   /* sheet white */
-  --bg-grid-alt:  #fafaf7;   /* alternate table row */
-  --bg-stamp:     #fef3f5;   /* faint redline wash */
+  /* Surfaces — dark institutional */
+  --bg:           #131720;   /* deep slate base */
+  --bg-deep:      #1a1e28;   /* letterhead band, sidebar block bodies */
+  --bg-card:      #1d2230;   /* sheet / card surface */
+  --bg-grid-alt:  #181c26;   /* alternate table row */
+  --bg-stamp:     #2a1a20;   /* faint dark-redline wash */
 
-  /* Ink */
-  --ink:          #0d1b2a;   /* deep institutional navy — primary text */
-  --ink-charcoal: #1a1f2e;
-  --ink-muted:    #5a6275;
-  --ink-faint:    #9aa0ad;
+  /* Ink — warm off-white (aged-paper feel inverted) */
+  --ink:          #e8e3d5;   /* primary text */
+  --ink-charcoal: #d4cfc0;   /* deeper body text */
+  --ink-muted:    #8a8f9c;   /* secondary text */
+  --ink-faint:    #5a606c;   /* tertiary */
 
   /* Rules */
-  --rule:         #0d1b2a;   /* 1px hard rule */
-  --rule-soft:    #c8ccd3;   /* table grid lines */
-  --rule-faint:   #e2e4e9;   /* divider */
+  --rule:         #3a4050;   /* subtle border */
+  --rule-soft:    #2a3040;   /* table grid lines */
+  --rule-faint:   #1f2530;   /* divider */
 
   /* Accent — sparing */
-  --redline:      #c8102e;   /* PASS stamps, low-score callouts */
-  --pdf-blue:     #1d4ed8;   /* CONSIDER, highlights, links */
-  --highlight:    #fff200;   /* highlighter yellow */
-  --consider-bg:  #eef2ff;
+  --redline:      #ff5470;   /* PASS stamps, low-score callouts (brightened for dark bg) */
+  --pdf-blue:     #5d96ff;   /* CONSIDER, highlights, links (brightened for dark bg) */
+  --highlight:    #ffd84d;   /* highlighter yellow */
+  --consider-bg:  #1a2335;
 
   /* Type */
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
@@ -331,7 +331,7 @@ a:hover { text-decoration: none; }
   border: 1px solid var(--rule);
   color: var(--ink);
   appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 4.5L6 8 9 4.5' stroke='%230d1b2a' stroke-width='1.5' fill='none'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 4.5L6 8 9 4.5' stroke='%23e8e3d5' stroke-width='1.5' fill='none'/></svg>");
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   background-size: 10px;
