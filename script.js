@@ -51,7 +51,6 @@
               <span>${escapeHTML(String(it.year))}</span>
               <span>${escapeHTML(it.genre)}</span>
               <span>Written by ${escapeHTML(it.writer)}</span>
-              <span>${escapeHTML(String(it.pages))} pp.</span>
             </div>
           </div>
           <div class="mini-score">
