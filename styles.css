@@ -871,6 +871,316 @@ a:hover { text-decoration: none; }
   text-align: center;
 }
 
+/* =========================================================================
+   WRITER RETROSPECTIVES — long-form auteur audit essays
+   ========================================================================= */
+.retrospective-doc {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem var(--gutter) 4rem;
+}
+
+.retro-header {
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+  padding: 1.2rem 0 1.6rem;
+}
+.retro-header .file-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink-muted);
+  margin-bottom: 0.8rem;
+}
+.retro-header h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+.retro-header .retro-subtitle {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-muted);
+  margin: 0;
+  max-width: 56ch;
+}
+
+/* Primary System Defects list */
+.defects {
+  margin: 0 0 2.5rem;
+  padding: 1.2rem 0 1.4rem;
+  border-bottom: 1px solid var(--rule-faint);
+}
+.defects h2 {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+  font-weight: 500;
+  margin-bottom: 0.9rem;
+}
+.defects ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: defect-counter;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.defects ol li {
+  padding: 0.5rem 0 0.5rem 1.8rem;
+  position: relative;
+  counter-increment: defect-counter;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.defects ol li::before {
+  content: "0" counter(defect-counter);
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--redline);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+/* Modern Reality opener block */
+.modern-reality {
+  margin-bottom: 2.5rem;
+}
+.modern-reality h2,
+.core-analysis h2 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.modern-reality p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink-charcoal);
+  font-weight: 400;
+  max-width: 64ch;
+}
+
+/* Core Defect Analysis — main long-form prose */
+.core-analysis {
+  margin: 2.8rem 0;
+}
+.core-analysis p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-charcoal);
+  margin-bottom: 1.1rem;
+}
+.core-analysis p:first-of-type::first-letter {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 0.85;
+  float: left;
+  padding: 0.25rem 0.6rem 0 0;
+  color: var(--ink);
+}
+
+/* Metric Override — stamped data block */
+.metric-override {
+  margin: 3rem 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 1.4rem 0 1.6rem;
+  background: var(--bg-deep);
+  padding: 1.6rem 1.8rem;
+}
+.metric-override .head {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.metric-override .head strong {
+  font-family: var(--sans);
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.92rem;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+.metric-override .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 0.4rem;
+}
+.metric-override .cell {
+  border-left: 2px solid var(--ink);
+  padding-left: 1rem;
+}
+.metric-override .cell .label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+  margin-bottom: 0.5rem;
+}
+.metric-override .cell .value {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+/* Mandatory Redline Directive — boxed prescription */
+.redline-directive {
+  margin: 3rem 0 2rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 1.4rem 0 0.4rem;
+}
+.redline-directive h2 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+.redline-directive p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-charcoal);
+  margin-bottom: 1rem;
+  padding-left: 1.4rem;
+  position: relative;
+}
+.redline-directive p::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--redline);
+  font-weight: 700;
+}
+.redline-directive p strong {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--redline);
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+
+/* Byline — Hunter G. signoff */
+.byline {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule-faint);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+}
+.byline .signature {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+/* Retrospectives index page — list of teasers */
+.retro-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  margin-top: 2rem;
+}
+.retro-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1.8rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+  text-decoration: none;
+  color: var(--ink);
+  align-items: start;
+  transition: background 0.15s ease;
+}
+.retro-card:hover { background: var(--bg-deep); }
+.retro-card .file-no {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding-top: 0.3rem;
+}
+.retro-card h3 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+.retro-card .subtitle {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-muted);
+  margin-bottom: 0.8rem;
+}
+.retro-card .defects-preview {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+.retro-card .defects-preview span + span::before {
+  content: ' · ';
+  color: var(--ink-faint);
+  margin: 0 0.3rem;
+}
+
+@media (max-width: 720px) {
+  .defects ol { grid-template-columns: 1fr; gap: 0.4rem; }
+  .metric-override .grid { grid-template-columns: 1fr; gap: 1rem; }
+  .metric-override .cell { border-left: 2px solid var(--ink); }
+  .retro-card { grid-template-columns: 60px 1fr; gap: 1rem; }
+  .retro-card h3 { font-size: 1.3rem; }
+  .core-analysis p:first-of-type::first-letter { font-size: 2.8rem; }
+}
+
 /* ---------- About page ---------- */
 .about-doc h1 {
   text-transform: uppercase;
