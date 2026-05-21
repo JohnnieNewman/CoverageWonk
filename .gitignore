@@ -1,0 +1,19 @@
+# Build / dev tooling — not deployed
+build_reviews.py
+*.pyc
+__pycache__/
+
+# Secrets
+.github-token
+.vercel-token
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp

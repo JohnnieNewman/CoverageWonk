@@ -1,0 +1,8 @@
+build_reviews.py
+*.pyc
+__pycache__/
+.github-token
+.vercel-token
+.env
+.env.*
+.DS_Store
