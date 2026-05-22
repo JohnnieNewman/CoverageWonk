@@ -74,6 +74,30 @@
     render();
   }
 
+  // ---------- Score Extremes sidebar widget ----------
+  const highestListEl = document.getElementById('highest-list');
+  const lowestListEl = document.getElementById('lowest-list');
+  if (highestListEl && lowestListEl && window.COVERAGE_DATA) {
+    const escapeHTML = (s) => String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+    const sortedDesc = [...window.COVERAGE_DATA].sort((a, b) => b.score - a.score);
+    const top5 = sortedDesc.slice(0, 5);
+    const bottom5 = sortedDesc.slice(-5).reverse();  // lowest-first
+
+    const renderRow = (it, scoreClass) => `
+      <li>
+        <a href="/reviews/${escapeHTML(it.slug)}.html">
+          <span class="title">${escapeHTML(it.title)}</span>
+          <span class="score-num ${scoreClass}">${it.score.toFixed(1)}</span>
+        </a>
+      </li>
+    `;
+
+    highestListEl.innerHTML = top5.map(it => renderRow(it, 'high')).join('');
+    lowestListEl.innerHTML = bottom5.map(it => renderRow(it, 'low')).join('');
+  }
+
   // ---------- Most Read sidebar widget ----------
   const mostReadEl = document.getElementById('most-read-list');
   if (mostReadEl && window.MOST_READ && window.COVERAGE_DATA) {
