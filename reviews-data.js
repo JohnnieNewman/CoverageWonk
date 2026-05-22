@@ -39,7 +39,8 @@ window.COVERAGE_DATA = [
   { file: "CW-033", slug: "amadeus",              title: "Amadeus",                 year: 1984, decade: "1980s", director: "Miloš Forman",        writer: "Peter Shaffer",           genre: "Period Drama / Musical Biopic",      pages: 158, station: "PASS",     score: 4.5 },
   { file: "CW-034", slug: "out-of-africa",        title: "Out of Africa",           year: 1985, decade: "1980s", director: "Sydney Pollack",      writer: "Kurt Luedtke",            genre: "Period Melodrama / Romance",         pages: 154, station: "PASS",     score: 3.2 },
   { file: "CW-035", slug: "platoon",              title: "Platoon",                 year: 1986, decade: "1980s", director: "Oliver Stone",        writer: "Oliver Stone",            genre: "Military Action / Vietnam War Drama", pages: 114, station: "CONSIDER", score: 7.1 },
-  { file: "CW-036", slug: "rain-man",             title: "Rain Man",                year: 1988, decade: "1980s", director: "Barry Levinson",      writer: "Bass & Morrow",           genre: "Drama / Road-Trip Melodrama",        pages: 122, station: "CONSIDER", score: 7.4 }
+  { file: "CW-036", slug: "rain-man",             title: "Rain Man",                year: 1988, decade: "1980s", director: "Barry Levinson",      writer: "Bass & Morrow",           genre: "Drama / Road-Trip Melodrama",        pages: 122, station: "CONSIDER", score: 7.4 },
+  { file: "CW-037", slug: "taxi-driver",          title: "Taxi Driver",             year: 1976, decade: "1970s", director: "Martin Scorsese",     writer: "Paul Schrader",           genre: "Psychological Thriller / Neo-Noir", pages: 114, station: "PASS", score: 0.9 }
 ];
 
 // ----- MOST READ · PAST 30 DAYS -----
@@ -47,6 +48,7 @@ window.COVERAGE_DATA = [
 // To shuffle the list, just rearrange the entries. Fake read counts.
 window.MOST_READ = [
   { slug: "chinatown",                          reads: 14729 },
+  { slug: "taxi-driver",                        reads: 13288 },
   { slug: "the-zone-of-interest",               reads: 12482 },
   { slug: "pulp-fiction",                       reads: 11317 },
   { slug: "ballerina",                          reads: 9846  },
@@ -54,6 +56,5 @@ window.MOST_READ = [
   { slug: "oppenheimer",                        reads: 7531  },
   { slug: "whiplash",                           reads: 7124  },
   { slug: "the-social-network",                 reads: 6892  },
-  { slug: "magnolia",                           reads: 6210  },
-  { slug: "everything-everywhere-all-at-once",  reads: 5847  }
+  { slug: "magnolia",                           reads: 6210  }
 ];
