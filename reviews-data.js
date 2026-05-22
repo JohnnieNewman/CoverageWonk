@@ -40,7 +40,8 @@ window.COVERAGE_DATA = [
   { file: "CW-034", slug: "out-of-africa",        title: "Out of Africa",           year: 1985, decade: "1980s", director: "Sydney Pollack",      writer: "Kurt Luedtke",            genre: "Period Melodrama / Romance",         pages: 154, station: "PASS",     score: 3.2 },
   { file: "CW-035", slug: "platoon",              title: "Platoon",                 year: 1986, decade: "1980s", director: "Oliver Stone",        writer: "Oliver Stone",            genre: "Military Action / Vietnam War Drama", pages: 114, station: "CONSIDER", score: 7.1 },
   { file: "CW-036", slug: "rain-man",             title: "Rain Man",                year: 1988, decade: "1980s", director: "Barry Levinson",      writer: "Bass & Morrow",           genre: "Drama / Road-Trip Melodrama",        pages: 122, station: "CONSIDER", score: 7.4 },
-  { file: "CW-037", slug: "taxi-driver",          title: "Taxi Driver",             year: 1976, decade: "1970s", director: "Martin Scorsese",     writer: "Paul Schrader",           genre: "Psychological Thriller / Neo-Noir", pages: 114, station: "PASS", score: 0.9 }
+  { file: "CW-037", slug: "taxi-driver",          title: "Taxi Driver",             year: 1976, decade: "1970s", director: "Martin Scorsese",     writer: "Paul Schrader",           genre: "Psychological Thriller / Neo-Noir", pages: 114, station: "PASS", score: 0.9 },
+  { file: "CW-038", slug: "the-goonies",          title: "The Goonies",             year: 1985, decade: "1980s", director: "Richard Donner",      writer: "Columbus & Spielberg",    genre: "Action-Adventure / Four-Quadrant Family", pages: 112, station: "CONSIDER", score: 9.4 }
 ];
 
 // ----- MOST READ · PAST 30 DAYS -----
