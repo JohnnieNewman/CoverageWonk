@@ -556,6 +556,30 @@ a:hover { text-decoration: none; }
   color: var(--ink-faint);
 }
 
+/* Hot Reads — flame badges + heat pulse */
+.most-read-list .flame {
+  display: inline-block;
+  font-size: 0.78rem;
+  margin-right: 0.15rem;
+  vertical-align: baseline;
+  filter: saturate(1.15);
+}
+.most-read-list .title.heat-hot {
+  color: var(--redline);
+}
+.most-read-list .title.heat-blaze {
+  color: var(--redline);
+  font-weight: 700;
+  animation: cw-heat-pulse 2.2s ease-in-out infinite;
+}
+@keyframes cw-heat-pulse {
+  0%, 100% { text-shadow: 0 0 0 rgba(255, 84, 112, 0); }
+  50%      { text-shadow: 0 0 14px rgba(255, 84, 112, 0.55); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .most-read-list .title.heat-blaze { animation: none; }
+}
+
 .sidebar-cta {
   display: block;
   padding: 1.2rem;
