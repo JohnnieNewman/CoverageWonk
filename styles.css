@@ -1240,6 +1240,49 @@ a:hover { text-decoration: none; }
   .core-analysis p:first-of-type::first-letter { font-size: 2.8rem; }
 }
 
+/* =========================================================================
+   OFFICIAL DENIAL — Dickens-via-Pynchon site notice (home page only)
+   ========================================================================= */
+.official-denial {
+  margin: 3rem auto 3.5rem;
+  max-width: 720px;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 1.6rem 0 1.8rem;
+}
+.official-denial .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--redline);
+  margin-bottom: 1rem;
+  display: block;
+  font-weight: 700;
+}
+.official-denial p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-charcoal);
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+.official-denial p:last-of-type { margin-bottom: 0; }
+.official-denial .signoff {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-muted);
+  margin-top: 1.4rem;
+  font-weight: 500;
+}
+.official-denial .signoff strong {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
 /* ---------- About page ---------- */
 .about-doc h1 {
   text-transform: uppercase;
