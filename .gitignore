@@ -1,6 +1,9 @@
 # Build / dev tooling — not deployed
 build_reviews.py
 build_retrospectives.py
+
+# Local working notes — never deployed
+_notes/
 *.pyc
 __pycache__/
 

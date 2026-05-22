@@ -1,5 +1,6 @@
 build_reviews.py
 build_retrospectives.py
+_notes/
 *.pyc
 __pycache__/
 .github-token
