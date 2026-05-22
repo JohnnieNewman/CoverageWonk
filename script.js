@@ -226,7 +226,7 @@
   // file in canonical (file-number) order. No HTML edits required — runs
   // entirely from script.js, so it works on the hand-built Chinatown page too.
   (function injectCoveragePager() {
-    const match = window.location.pathname.match(/^\/reviews\/(.+?)\.html?$/);
+    const match = window.location.pathname.match(/^\/reviews\/([^/]+?)(?:\.html?)?\/?$/);
     if (!match || !window.COVERAGE_DATA) return;
     const currentSlug = match[1];
 
@@ -280,7 +280,7 @@
 
   // ---------- Keyboard navigation (review pages: ← →) ----------
   (function injectKeyboardPager() {
-    const match = window.location.pathname.match(/^\/reviews\/(.+?)\.html?$/);
+    const match = window.location.pathname.match(/^\/reviews\/([^/]+?)(?:\.html?)?\/?$/);
     if (!match || !window.COVERAGE_DATA) return;
     const currentSlug = match[1];
     const sorted = [...window.COVERAGE_DATA].sort((a, b) => a.file.localeCompare(b.file));
