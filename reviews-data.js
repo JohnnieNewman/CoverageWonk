@@ -41,3 +41,19 @@ window.COVERAGE_DATA = [
   { file: "CW-035", slug: "platoon",              title: "Platoon",                 year: 1986, decade: "1980s", director: "Oliver Stone",        writer: "Oliver Stone",            genre: "Military Action / Vietnam War Drama", pages: 114, station: "CONSIDER", score: 7.1 },
   { file: "CW-036", slug: "rain-man",             title: "Rain Man",                year: 1988, decade: "1980s", director: "Barry Levinson",      writer: "Bass & Morrow",           genre: "Drama / Road-Trip Melodrama",        pages: 122, station: "CONSIDER", score: 7.4 }
 ];
+
+// ----- MOST READ · PAST 30 DAYS -----
+// Edit this array to reorder the trending sidebar widget on the home page.
+// To shuffle the list, just rearrange the entries. Fake read counts.
+window.MOST_READ = [
+  { slug: "chinatown",                          reads: 14729 },
+  { slug: "the-zone-of-interest",               reads: 12482 },
+  { slug: "pulp-fiction",                       reads: 11317 },
+  { slug: "ballerina",                          reads: 9846  },
+  { slug: "parasite",                           reads: 8902  },
+  { slug: "oppenheimer",                        reads: 7531  },
+  { slug: "whiplash",                           reads: 7124  },
+  { slug: "the-social-network",                 reads: 6892  },
+  { slug: "magnolia",                           reads: 6210  },
+  { slug: "everything-everywhere-all-at-once",  reads: 5847  }
+];

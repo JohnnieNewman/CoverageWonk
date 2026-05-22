@@ -74,6 +74,36 @@
     render();
   }
 
+  // ---------- Most Read sidebar widget ----------
+  const mostReadEl = document.getElementById('most-read-list');
+  if (mostReadEl && window.MOST_READ && window.COVERAGE_DATA) {
+    const escapeHTML = (s) => String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+    const coverageBySlug = Object.fromEntries(
+      window.COVERAGE_DATA.map(it => [it.slug, it])
+    );
+    mostReadEl.innerHTML = window.MOST_READ.map((entry, idx) => {
+      const cov = coverageBySlug[entry.slug];
+      if (!cov) return '';
+      const stationColor = cov.station === 'CONSIDER' ? 'var(--pdf-blue)' : 'var(--redline)';
+      return `
+        <li>
+          <a href="/reviews/${escapeHTML(cov.slug)}.html">
+            <span class="rank">${String(idx + 1).padStart(2, '0')}</span>
+            <div class="info">
+              <div class="title">${escapeHTML(cov.title)}</div>
+              <div class="meta">
+                <span class="score" style="color:${stationColor}">${cov.score.toFixed(1)} · ${escapeHTML(cov.station)}</span>
+                <span class="reads">${entry.reads.toLocaleString()} reads</span>
+              </div>
+            </div>
+          </a>
+        </li>
+      `;
+    }).join('');
+  }
+
   // ---------- Share button (review pages) ----------
   document.querySelectorAll('[data-share]').forEach(btn => {
     btn.addEventListener('click', async (e) => {
