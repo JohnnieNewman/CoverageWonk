@@ -46,7 +46,11 @@ window.COVERAGE_DATA = [
   { file: "CW-040", slug: "aliens",               title: "Aliens",                  year: 1986, decade: "1980s", director: "James Cameron",       writer: "James Cameron",           genre: "Sci-Fi / Action-Thriller",            pages: 118, station: "CONSIDER", score: 9.3 },
   { file: "CW-041", slug: "mad-max-fury-road",    title: "Mad Max: Fury Road",      year: 2015, decade: "2010s", director: "George Miller",       writer: "Miller, McCarthy & Lathouris", genre: "High-Concept Action / Post-Apocalyptic Thriller", pages: 102, station: "CONSIDER", score: 9.3 },
   { file: "CW-042", slug: "winter-soldier",       title: "Captain America: The Winter Soldier", year: 2014, decade: "2010s", director: "Russo Brothers", writer: "Markus & McFeely",        genre: "Political Spy Thriller / Superhero Action", pages: 120, station: "CONSIDER", score: 8.5 },
-  { file: "CW-043", slug: "the-princess-bride",   title: "The Princess Bride",      year: 1987, decade: "1980s", director: "Rob Reiner",          writer: "William Goldman",         genre: "Fantasy / Adventure Comedy",          pages: 106, station: "CONSIDER", score: 8.8 }
+  { file: "CW-043", slug: "the-princess-bride",   title: "The Princess Bride",      year: 1987, decade: "1980s", director: "Rob Reiner",          writer: "William Goldman",         genre: "Fantasy / Adventure Comedy",          pages: 106, station: "CONSIDER", score: 8.8 },
+  { file: "CW-044", slug: "frances-ha",           title: "Frances Ha",              year: 2012, decade: "2010s", director: "Noah Baumbach",       writer: "Baumbach & Gerwig",       genre: "Mumblecore / Independent Dramedy",    pages: 104, station: "PASS",     score: 2.9 },
+  { file: "CW-045", slug: "the-hateful-eight",    title: "The Hateful Eight",       year: 2015, decade: "2010s", director: "Quentin Tarantino",   writer: "Quentin Tarantino",       genre: "Period Mystery / Revisionist Western", pages: 146, station: "PASS",     score: 0.8 },
+  { file: "CW-046", slug: "the-fifth-element",    title: "The Fifth Element",       year: 1997, decade: "1990s", director: "Luc Besson",          writer: "Besson & Kamen",          genre: "Sci-Fi / Action",                     pages: 118, station: "PASS",     score: 0.4 },
+  { file: "CW-047", slug: "bull-durham",          title: "Bull Durham",             year: 1988, decade: "1980s", director: "Ron Shelton",         writer: "Ron Shelton",             genre: "Sports Comedy / Romantic Drama",      pages: 116, station: "CONSIDER", score: 8.6 }
 ];
 
 // ----- MOST READ · PAST 30 DAYS -----
