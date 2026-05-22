@@ -1514,6 +1514,106 @@ a:hover { text-decoration: none; }
   color: var(--ink-charcoal);
 }
 
+/* ---------- Coverage pager (prev/next on review pages) ---------- */
+.coverage-pager {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  padding: 0 2rem;
+}
+.coverage-pager .pager-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+}
+.coverage-pager .pager-meta-label { color: var(--ink-faint); }
+.coverage-pager .pager-meta-pos {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+.coverage-pager .pager-index-link {
+  margin-left: auto;
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.coverage-pager .pager-index-link:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink-muted);
+}
+.coverage-pager .pager-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.coverage-pager .pager-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.4rem 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 140ms ease, transform 140ms ease, background 140ms ease;
+}
+.coverage-pager .pager-slot:hover {
+  border-color: var(--ink-muted);
+  background: var(--bg-elev, var(--bg-card));
+  transform: translateY(-2px);
+}
+.coverage-pager .pager-empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+.coverage-pager .pager-next { text-align: right; align-items: flex-end; }
+.coverage-pager .pager-direction {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+}
+.coverage-pager .pager-file {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+  font-weight: 700;
+}
+.coverage-pager .pager-title {
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-top: 0.1rem;
+}
+.coverage-pager .pager-score {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+.coverage-pager .pager-pass { color: var(--redline); }
+.coverage-pager .pager-consider { color: var(--pdf-blue); }
+@media (max-width: 720px) {
+  .coverage-pager .pager-row { grid-template-columns: 1fr; }
+  .coverage-pager .pager-next { text-align: left; align-items: flex-start; }
+  .coverage-pager .pager-title { font-size: 1.2rem; }
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--rule);

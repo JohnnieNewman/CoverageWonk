@@ -221,6 +221,85 @@
     }).join('');
   }
 
+  // ---------- Prev/Next pager (review pages) ----------
+  // Injects a bottom-of-page navigator linking to the prior and next coverage
+  // file in canonical (file-number) order. No HTML edits required — runs
+  // entirely from script.js, so it works on the hand-built Chinatown page too.
+  (function injectCoveragePager() {
+    const match = window.location.pathname.match(/^\/reviews\/(.+?)\.html?$/);
+    if (!match || !window.COVERAGE_DATA) return;
+    const currentSlug = match[1];
+
+    const sorted = [...window.COVERAGE_DATA].sort((a, b) => a.file.localeCompare(b.file));
+    const idx = sorted.findIndex(it => it.slug === currentSlug);
+    if (idx === -1) return;
+
+    const prev = idx > 0 ? sorted[idx - 1] : null;
+    const next = idx < sorted.length - 1 ? sorted[idx + 1] : null;
+    if (!prev && !next) return;
+
+    const esc = (s) => String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+
+    const slot = (it, dir) => {
+      if (!it) return `<div class="pager-slot pager-empty" aria-hidden="true"></div>`;
+      const stationClass = it.station === 'CONSIDER' ? 'pager-consider' : 'pager-pass';
+      const arrow = dir === 'prev' ? '←' : '→';
+      const label = dir === 'prev' ? 'Previous File' : 'Next File';
+      return `
+        <a class="pager-slot pager-${dir}" href="/reviews/${esc(it.slug)}.html">
+          <span class="pager-direction">${dir === 'prev' ? arrow + ' ' + label : label + ' ' + arrow}</span>
+          <span class="pager-file">${esc(it.file)}</span>
+          <span class="pager-title">${esc(it.title)}</span>
+          <span class="pager-score ${stationClass}">${it.score.toFixed(1)} · ${esc(it.station)}</span>
+        </a>
+      `;
+    };
+
+    const nav = document.createElement('nav');
+    nav.className = 'coverage-pager';
+    nav.setAttribute('aria-label', 'Coverage file navigation');
+    nav.innerHTML = `
+      <div class="pager-meta">
+        <span class="pager-meta-label">Ledger Position</span>
+        <span class="pager-meta-pos">${String(idx + 1).padStart(2,'0')} / ${String(sorted.length).padStart(2,'0')}</span>
+        <a class="pager-index-link" href="/">Return to Index</a>
+      </div>
+      <div class="pager-row">
+        ${slot(prev, 'prev')}
+        ${slot(next, 'next')}
+      </div>
+    `;
+
+    const footer = document.querySelector('.site-footer');
+    if (footer && footer.parentNode) {
+      footer.parentNode.insertBefore(nav, footer);
+    }
+  })();
+
+  // ---------- Keyboard navigation (review pages: ← →) ----------
+  (function injectKeyboardPager() {
+    const match = window.location.pathname.match(/^\/reviews\/(.+?)\.html?$/);
+    if (!match || !window.COVERAGE_DATA) return;
+    const currentSlug = match[1];
+    const sorted = [...window.COVERAGE_DATA].sort((a, b) => a.file.localeCompare(b.file));
+    const idx = sorted.findIndex(it => it.slug === currentSlug);
+    if (idx === -1) return;
+
+    document.addEventListener('keydown', (e) => {
+      // Ignore when user is typing in a form field
+      const t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === 'ArrowLeft' && idx > 0) {
+        window.location.href = `/reviews/${sorted[idx - 1].slug}.html`;
+      } else if (e.key === 'ArrowRight' && idx < sorted.length - 1) {
+        window.location.href = `/reviews/${sorted[idx + 1].slug}.html`;
+      }
+    });
+  })();
+
   // ---------- Share button (review pages) ----------
   document.querySelectorAll('[data-share]').forEach(btn => {
     btn.addEventListener('click', async (e) => {
