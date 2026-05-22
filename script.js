@@ -15,6 +15,53 @@
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[c]));
 
+    // ---- Editor's Cut: pin 3 + daily-rotating shuffle + anti-cluster ----
+    const PINNED_SLUGS = ['chinatown', 'network', 'midnight-run'];
+    const CLUSTER_THRESHOLD = 1.5; // adjacent scores within this trigger a swap
+
+    function editorCut(items) {
+      // Honor active filters: only pin if pinned items survived the filter.
+      const pinned = PINNED_SLUGS
+        .map(slug => items.find(it => it.slug === slug))
+        .filter(Boolean);
+      const pinnedSet = new Set(pinned.map(it => it.slug));
+      const rest = items.filter(it => !pinnedSet.has(it.slug));
+
+      // Daily-rotating seed — order is stable within a day, rotates overnight.
+      const day = Math.floor(Date.now() / 86400000);
+      let seed = day * 9301 + 49297;
+      const rng = () => {
+        seed = (Math.imul(seed, 9301) + 49297) | 0;
+        // Map to [0, 1)
+        return ((seed >>> 0) % 233280) / 233280;
+      };
+
+      // Fisher-Yates
+      const shuffled = [...rest];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      // Anti-cluster pass: if two neighbors' scores are within threshold,
+      // swap the second one with a later item that differs sufficiently.
+      for (let i = 0; i < shuffled.length - 1; i++) {
+        if (Math.abs(shuffled[i].score - shuffled[i + 1].score) < CLUSTER_THRESHOLD) {
+          for (let j = i + 2; j < shuffled.length; j++) {
+            const differsFromI = Math.abs(shuffled[i].score - shuffled[j].score) >= CLUSTER_THRESHOLD;
+            const wouldNotClusterBack = i + 2 >= shuffled.length ||
+              Math.abs(shuffled[j].score - shuffled[i + 2].score) >= CLUSTER_THRESHOLD;
+            if (differsFromI && wouldNotClusterBack) {
+              [shuffled[i + 1], shuffled[j]] = [shuffled[j], shuffled[i + 1]];
+              break;
+            }
+          }
+        }
+      }
+
+      return [...pinned, ...shuffled];
+    }
+
     function render() {
       let items = [...window.COVERAGE_DATA];
 
@@ -30,16 +77,24 @@
       }
 
       // Sort
-      const mode = sortBy ? sortBy.value : 'file';
-      const cmp = {
-        'file':       (a, b) => a.file.localeCompare(b.file),
-        'score-asc':  (a, b) => a.score - b.score,
-        'score-desc': (a, b) => b.score - a.score,
-        'year-asc':   (a, b) => a.year - b.year,
-        'year-desc':  (a, b) => b.year - a.year,
-        'title':      (a, b) => a.title.localeCompare(b.title)
-      }[mode] || ((a, b) => 0);
-      items.sort(cmp);
+      const mode = sortBy ? sortBy.value : 'editor';
+
+      if (mode === 'editor') {
+        // Editor's Cut: pin 3 openers, shuffle the rest with daily-rotating
+        // seed, then walk the result swapping out adjacent items whose scores
+        // sit within 1.5 of each other to prevent ugly clusters.
+        items = editorCut(items);
+      } else {
+        const cmp = {
+          'file':       (a, b) => a.file.localeCompare(b.file),
+          'score-asc':  (a, b) => a.score - b.score,
+          'score-desc': (a, b) => b.score - a.score,
+          'year-asc':   (a, b) => a.year - b.year,
+          'year-desc':  (a, b) => b.year - a.year,
+          'title':      (a, b) => a.title.localeCompare(b.title)
+        }[mode] || ((a, b) => 0);
+        items.sort(cmp);
+      }
 
       // Render
       listEl.innerHTML = items.map(it => `
